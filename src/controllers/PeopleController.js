@@ -1,7 +1,7 @@
 const database = require("../models");
 
 class PeopleController {
-  static async getAll(req, res) {
+  static async getAllColaborators(req, res) {
     try {
       const allPeople = await database.Pessoas.findAll();
       return res.status(200).json(allPeople);
@@ -20,8 +20,9 @@ class PeopleController {
       return res.status(500).json(error.message);
     }
   }
-  static async addNew(req, res) {
+  static async createColaborator(req, res) {
     const newPeople = req.body;
+
     try {
       const add = await database.Pessoas.create(newPeople);
       return res.status(200).json(add);
